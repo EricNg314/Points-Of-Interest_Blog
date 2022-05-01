@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
       req.session.username = userData.username;
       req.session.loggedIn = true;
 
-      res.json(userData);
+      res.json({message: "Account created."}) 
     });
   } catch (error) {
     console.log(error);
@@ -40,9 +40,45 @@ router.post('/', async (req, res) => {
   }
 });
 
-// TODO: Create login route.
+// Login route.
+router.post('/login', async (req, res) => {
+  console.log(`${req.method}: ${req.baseUrl}`);
+  try {
+    const userData = await User.findOne({
+      where: {
+        email: req.body.email
+      }
+    });
 
+    if (!userData) {
+      res.status(400).json({
+        message: "Invalid email or password."
+      })
+      return;
+    }
 
+    const validPassword = userData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({
+        message: "Invalid email or password."
+      })
+      return;
+    }
+      
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
+      req.session.loggedIn = true;
+
+      res.json({message: "Account signed in."})
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
+
+// Logout route.
 router.post('/logout', (req, res) => {
   console.log(`${req.method}: ${req.baseUrl}`);
   if (req.session.loggedIn) {

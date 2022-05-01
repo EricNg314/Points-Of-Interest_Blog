@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace('/dashboard/');
     } else {
-      document.getElementById('loginError').innerText = 'Incorrect username or password.';
+      document.getElementById('loginError').innerText = 'Invalid email or password.';
     }
   }
 }
