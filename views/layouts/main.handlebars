@@ -7,6 +7,30 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="wrapper">
+    <header>
+      <h1>
+        <a href="/">Points of Interest Blog</a>
+      </h1>
+      <nav>
+        {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
+        <button id="logout" class="btn-no-style">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+      Thank you and have a nice day!
+    </footer>
+  </div>
   
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
 </body>
 </html>
