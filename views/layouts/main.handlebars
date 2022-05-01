@@ -17,19 +17,33 @@
 </head>
 <body>
   <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">Points of Interest Blog</a>
-      </h1>
-      <nav class="nav">
+    <div>
+      <header>
+        <h1>
+          <a href="/">Points of Interest Blog</a>
+        </h1>
+        
+      {{!-- <nav class="nav">
         {{#if loggedIn}}
         <a href="/dashboard">dashboard</a>
         <button id="logout" class="btn-no-style">logout</button>
         {{else}}
         <a href="/login">login</a>
         {{/if}}
+      </nav> --}}
+        {{#if loggedIn}}
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </header>
+      <nav class="nav justify-content-center">
+        <a class="px-2" href="/">Home</a>
+        {{#if loggedIn}}
+        <a class="px-2" href="/dashboard">Dashboard</a>
+        {{/if}}
       </nav>
-    </header>
+    </div>
     <main>
       {{{ body }}}
     </main>
