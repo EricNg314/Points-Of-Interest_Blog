@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Sign up route.
 router.post('/', async (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   console.log(`${req.method}: ${req.baseUrl}`);
   try {
     const userData = await User.create({
@@ -39,5 +39,21 @@ router.post('/', async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+// TODO: Create login route.
+
+
+router.post('/logout', (req, res) => {
+  console.log(`${req.method}: ${req.baseUrl}`);
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
+
 
 module.exports = router;
