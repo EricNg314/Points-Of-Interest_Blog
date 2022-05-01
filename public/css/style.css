@@ -1,0 +1,77 @@
+:root {
+  --primary-txt-color: #ffffff;
+  --secondary-txt-color: #ffffff;
+  --tertiary-txt-color: #ffffff;
+  --primary-bg-color: rgb(20, 20, 20);
+  --secondary-bg-color: rgb(40, 40, 40);
+  --tertiary-bg-color: rgb(60, 60, 60);
+  --quaternary-bg-color: rgb(80, 80, 80);
+  --quinary-bg-color: rgb(120, 120, 120);
+}
+
+* {
+  font-size: 16px;
+}
+
+
+.color-bg-primary {
+  background-color: var(--primary-bg-color);
+}
+.color-bg-secondary {
+  background-color: var(--secondary-bg-color);
+}
+.color-bg-tertiary {
+  background-color: var(--tertiary-bg-color);
+}
+.color-bg-quaternary {
+  background-color: var(--quaternary-bg-color);
+}
+
+
+body {
+  color: var(--primary-txt-color);
+  background-color: var(--primary-bg-color);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+}
+
+main {
+  background-color: var(--secondary-bg-color);
+}
+
+
+
+header {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 2%;
+  
+}
+
+
+header h1 {
+  text-decoration: unset;
+}
+
+header h1 a {
+  font-size: 1.5em;
+  text-decoration: unset;
+}
+
+main {
+  flex: 1;
+  padding: 2% 4%;
+}
+
+
+
+footer {
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  padding: 1%;
+  font-size: 110%;
+}
