@@ -7,12 +7,37 @@
   --tertiary-bg-color: rgb(60, 60, 60);
   --quaternary-bg-color: rgb(80, 80, 80);
   --quinary-bg-color: rgb(120, 120, 120);
+  --callToAction-bg-color: rgb(25, 107, 158);
 }
 
-* {
+body {
   font-size: 16px;
 }
 
+
+h1 {
+  font-size: 200%;
+}
+
+h2 {
+  font-size: 150%;
+}
+
+h3 {
+  font-size: 125%;
+}
+h4, h5, h6 {
+  font-size: 100%;
+}
+
+
+a {
+  color: unset
+}
+a:hover {
+  color: unset;
+  text-decoration: unset;
+}
 
 .color-bg-primary {
   background-color: var(--primary-bg-color);
@@ -47,7 +72,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2% 2%;
+  padding: 1% 2%;
   
 }
 
@@ -57,7 +82,7 @@ header h1 {
 }
 
 header h1 a {
-  font-size: 1.5em;
+  /* font-size: 1.5em; */
   text-decoration: unset;
 }
 
@@ -66,12 +91,25 @@ main {
   padding: 2% 4%;
 }
 
-
-
 footer {
   border-top: 1px solid #ccc;
   display: flex;
   justify-content: center;
   padding: 1%;
   font-size: 110%;
+}
+
+.nav {
+  padding: 1% 2%;
+}
+
+.card {
+  background-color: unset;
+  border: 2px solid rgba(255,255,255,.125)
+}
+
+.btn {
+  color: unset;
+  background-color: var(--callToAction-bg-color);
+  /* border: 1px solid white; */
 }
