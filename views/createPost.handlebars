@@ -1,0 +1,30 @@
+
+
+<div>
+  <section class="d-flex flex-column align-items-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h2 class="">Create Post</h2>
+      <form class="card py-2 px-3 new-post-form ">
+        <div class="d-flex my-1 align-items-center">
+          <label class="text-left mr-2" for="post-title">Title:</label>
+          <input class="col form-control" type="text" id="post-title"  name="post-title" />
+        </div>
+        <div class="d-flex flex-column my-1 ">
+          <label class="text-left" for="post-comment">Comment:</label>
+          <textarea class="form-control my-1" id="post-comment"  name="post-comment" rows="3"></textarea>
+        </div>
+        <div class="col my-2">
+          <div class="d-flex justify-content-end">
+            <button class="btn " type="submit">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <span id="createPostError" class="text-warning"></span>
+</div>
+<script src="/js/add-post.js"></script>
+
+{{#unless loggedIn}}
+<script src="/js/loginReq.js"></script>
+{{/unless}}

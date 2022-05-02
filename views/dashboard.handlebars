@@ -1,3 +1,16 @@
 
-<h2>Dashboard</h2>
-<div>dashboard body</div>
+
+<div>
+  <section class="d-flex flex-column align-items-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h2 class="">Dashboard</h2>
+      <a class="btn my-2" href="/posts">Create a New Post</a>
+      
+      <div class="">dashboard body</div>
+    </div>
+  </section>
+</div>
+
+{{#unless loggedIn}}
+<script src="/js/loginReq.js"></script>
+{{/unless}}
