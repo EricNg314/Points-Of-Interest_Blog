@@ -5,8 +5,18 @@
     <div class="col-12 col-md-8 col-lg-6">
       <h2 class="">Dashboard</h2>
       <a class="btn my-2" href="/posts">Create a New Post</a>
-      
-      <div class="">dashboard body</div>
+      {{#if posts.length}}
+      <div class="">
+        <h3>Your Posts</h3>
+        <ul>
+          {{#each posts as |post|}}
+          <li>
+            {{> postPartial post}}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/if}}
     </div>
   </section>
 </div>
