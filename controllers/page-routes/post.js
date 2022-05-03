@@ -53,7 +53,11 @@ router.get('/view/:id', withAuth, async (req, res) => {
 
     const comments = postData.dataValues.comments.map((comment) => {
       let data = {}
-      data = comment.dataValues.comment_text;
+      data.username = comment.dataValues.user.dataValues.username;
+      data.user_id = comment.dataValues.user_id;
+      data.created_at = comment.dataValues.created_at;
+      data.comment_text = comment.dataValues.comment_text;
+      // console.log('comment.dataValues: ', comment.dataValues)
       return data;
     })
 
@@ -69,7 +73,8 @@ router.get('/view/:id', withAuth, async (req, res) => {
 
     res.render('viewPost', {
       postInfo: postInfo,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      username: req.session.username
     })
   } catch (error) {
     console.log(error);

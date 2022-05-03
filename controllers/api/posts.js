@@ -6,7 +6,6 @@ const withAuth = require('../../utils/auth');
 router.post('/', withAuth, async (req, res) => {
   console.log(`${req.method}: ${req.baseUrl}`);
   try {
-    console.log("req.session: ",req.session )
     if (req.body.title === "" || req.body.post_comment === "") {
       res.status(400).json({message: "Missing title and/or comment."})
       return;

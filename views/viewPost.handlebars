@@ -12,9 +12,26 @@
         <p class="p-2 ">{{postInfo.post_comment}}</p>
       </section>
 
+      {{!-- TODO: Add comments. --}}
+
+      <form class="comment-form">
+        <div>
+          Comment as {{username}}
+        </div>
+        <div>
+          <textarea name="comment-body"></textarea>
+        </div>
+
+        <div>
+          <button class="btn p-1 " type="submit">add comment</button>
+        </div>
+        
+        <span id="loginError" class="text-warning"></span>
+      </form>
     </div>
   </section>
 </div>
+<script src="/js/comment.js"></script>
 
 {{#unless loggedIn}}
 <script src="/js/loginReq.js"></script>
