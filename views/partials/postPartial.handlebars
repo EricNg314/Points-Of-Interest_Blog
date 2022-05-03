@@ -1,7 +1,7 @@
-<section>
-  <div>
-    <span>Posted by {{user.username}}</span>
-    <h4>{{title}}</h4>
+<section class="card mb-2">
+  <div class="dashboard-post-header p-2">
+    <span class="text-muted">Posted by {{user.username}}  ·  {{format_date created_at}}</span>
+    <h3 class="my-1">{{title}}</h3>
   </div>
-  <p>{{post_comment}}</p>
+  <p class="p-2 dashboard-post-comment">{{post_comment}}</p>
 </section>
