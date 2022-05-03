@@ -15,7 +15,11 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard/');
+      if(location.pathname === "/login"){
+        document.location.replace('/dashboard/');
+      } else {
+        location.reload();
+      }
     } else {
       document.getElementById('loginError').innerText = 'Invalid email or password.';
     }
@@ -41,7 +45,11 @@ async function signupFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard/');
+      if(location.pathname === "/login"){
+        document.location.replace('/dashboard/');
+      } else {
+        location.reload();
+      }
     } else {
       document.getElementById('loginError').innerText = 'Sign up failed. Please check username, email, or password length.';
     }
