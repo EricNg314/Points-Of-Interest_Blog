@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/create', async (req, res) => {
+router.get('/create', withAuth, async (req, res) => {
   res.render('createPost', {
     loggedIn: req.session.loggedIn
   })
