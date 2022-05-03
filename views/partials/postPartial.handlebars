@@ -4,6 +4,9 @@
       <span class="text-muted">Posted by {{user.username}}  ·  {{format_date created_at}}</span>
       <h3 class="my-1">{{title}}</h3>
     </div>
-    <p class="p-2 dashboard-post-comment">{{post_comment}}</p>
+    <div class="position-relative">
+      <p class="p-2 dashboard-post-comment">{{post_comment}}</p>
+    </div>
+    <div class="p-2"><span>{{comments.length}} Comments</span></div>
   </section>
 </a>
