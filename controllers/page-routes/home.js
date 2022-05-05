@@ -18,9 +18,6 @@ router.get('/', async (req, res) => {
           'title',
           'created_at'
         ],
-        order: [
-          ['created_at', 'DESC']
-        ],
         include: [
           {
             model: Comment,
@@ -34,6 +31,9 @@ router.get('/', async (req, res) => {
             model: User,
             attributes: ['username']
           }
+        ],
+        order: [
+          ['created_at', 'DESC']
         ]
       })
   

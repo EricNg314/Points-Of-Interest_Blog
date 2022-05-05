@@ -27,6 +27,9 @@ router.get('/', withAuth, async (req, res) => {
           model: User,
           attributes: ['username']
         }
+      ],
+      order: [
+        ['created_at', 'DESC']
       ]
     })
 

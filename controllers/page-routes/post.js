@@ -39,6 +39,9 @@ router.get('/view/:id', withAuth, async (req, res) => {
           model: User,
           attributes: ['username']
         }
+      ],
+      order: [
+        ['created_at', 'DESC']
       ]
     })
 
