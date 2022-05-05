@@ -4,26 +4,31 @@
   <section class="d-flex flex-column align-items-center">
     <div class="col-12 col-md-10 col-lg-8">
 
-      <section class="card mb-2">
-        <div class="post-header p-2">
-          <span class="text-muted">Posted by {{postInfo.username}}  ·  {{format_date postInfo.created_at}}</span>
+      <section class="card mb-4">
+        <div class="post-header p-2 color-bg-primary">
+          <span class="">Posted by {{postInfo.username}}  ·  {{format_date postInfo.created_at}}</span>
           <h2 class="my-1">{{postInfo.title}}</h2>
         </div>
         <p class="p-2 ">{{postInfo.post_comment}}</p>
       </section>
+      
+      {{#if postInfo.comments.length}}
+      <div class="mb-4">
+      {{#each postInfo.comments as |comment|}}
+        {{> comments comment}}
 
-      {{!-- TODO: Add comments. --}}
-
-      <form class="comment-form">
-        <div>
+      {{/each}}
+      </div>
+      {{/if}}
+      <form class="comment-form ">
+        <div class="mb-1">
           Comment as {{username}}
         </div>
-        <div>
-          <textarea name="comment-body"></textarea>
+        <div class="mb-1">
+          <textarea class="w-100 form-control" name="comment-body"></textarea>
         </div>
-
         <div>
-          <button class="btn p-1 " type="submit">add comment</button>
+          <button class="btn p-1 " type="submit">Comment</button>
         </div>
         
         <span id="loginError" class="text-warning"></span>
