@@ -53,10 +53,11 @@ router.get('/view/:id', withAuth, async (req, res) => {
 
     const comments = postData.dataValues.comments.map((comment) => {
       let data = {}
-      data.username = comment.dataValues.user.dataValues.username;
-      data.user_id = comment.dataValues.user_id;
-      data.created_at = comment.dataValues.created_at;
-      data.comment_text = comment.dataValues.comment_text;
+      const {user, user_id, created_at, comment_text } = comment.dataValues;
+      data.username = user.dataValues.username;
+      data.user_id = user_id;
+      data.created_at = created_at;
+      data.comment_text = comment_text;
       // console.log('comment.dataValues: ', comment.dataValues)
       return data;
     })
