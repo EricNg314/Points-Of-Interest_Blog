@@ -7,34 +7,34 @@ async function commentFormHandler(event) {
 
 
   if (comment_text) {
+    try {
+      grecaptcha.ready( async function() {
+        grecaptcha.execute('6LfGds4fAAAAAMkLeNvizoDylbBPZbYGLuBgOOS7', {action: 'submit'})
+        .then( async function(token) {
+          event.preventDefault();
+          const response = await fetch('/api/comments', {
+            method: 'POST',
+            body: JSON.stringify({
+              token,
+              post_id,
+              comment_text
+            }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
 
-    
-  grecaptcha.ready( async function() {
-    grecaptcha.execute('6LfGds4fAAAAAMkLeNvizoDylbBPZbYGLuBgOOS7', {action: 'submit'})
-    .then( async function(token) {
-      event.preventDefault();
-      const response = await fetch('/api/comments', {
-        method: 'POST',
-        body: JSON.stringify({
-          token,
-          post_id,
-          comment_text
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+          if (response.ok) {
+            document.location.reload();
+          } else {
+            document.getElementById('commentError').innerText = 'Unable to send, please sign in and ensure comment is not empty.';
+          }
+        });
       });
-
-      if (response.ok) {
-        document.location.reload();
-      } else {
-        document.getElementById('commentError').innerText = 'Unable to send, please sign in and ensure comment is not empty.';
-      }
-
-
-    });
-  });
-
+    } catch (error) {
+      console.log(error)
+      document.getElementById('commentError').innerText = 'Unable to send, please sign in and ensure comment is not empty.';
+    }
   }
 }
 

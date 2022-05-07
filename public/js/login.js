@@ -26,15 +26,6 @@ async function loginFormHandler(event) {
   }
 }
 
-function onClick(e) {
-  e.preventDefault();
-  grecaptcha.ready(function() {
-    grecaptcha.execute('6LfGds4fAAAAAMkLeNvizoDylbBPZbYGLuBgOOS7', {action: 'submit'}).then(function(token) {
-        // Add your logic to submit to your backend server here.
-    });
-  });
-}
-
 async function signupFormHandler(event) {
   event.preventDefault();
 
@@ -42,38 +33,41 @@ async function signupFormHandler(event) {
   const email = document.getElementById('email-signup').value.trim();
   const password = document.getElementById('password-signup').value.trim();
 
-  grecaptcha.ready( async function() {
-    grecaptcha.execute('6LfGds4fAAAAAMkLeNvizoDylbBPZbYGLuBgOOS7', {action: 'submit'})
-    .then( async function(token) {
-      event.preventDefault();
-      console.log('signup button token: ', token)
-      if (username && email && password) {
-        const response = await fetch('/api/users', {
-          method: 'post',
-          body: JSON.stringify({
-            token,
-            username,
-            email,
-            password
-          }),
-          headers: { 'Content-Type': 'application/json' }
-        });
+  try {
+    grecaptcha.ready( async function() {
+      grecaptcha.execute('6LfGds4fAAAAAMkLeNvizoDylbBPZbYGLuBgOOS7', {action: 'submit'})
+      .then( async function(token) {
+        event.preventDefault();
+        if (username && email && password) {
+          const response = await fetch('/api/users', {
+            method: 'post',
+            body: JSON.stringify({
+              token,
+              username,
+              email,
+              password
+            }),
+            headers: { 'Content-Type': 'application/json' }
+          });
 
-        if (response.ok) {
-          if(location.pathname === "/login"){
-            document.location.replace('/dashboard/');
+          if (response.ok) {
+            if(location.pathname === "/login"){
+              document.location.replace('/dashboard/');
+            } else {
+              console.log("response: ", response)
+              location.reload();
+            }
           } else {
-            console.log("response: ", response)
-            location.reload();
+            document.getElementById('loginError').innerText = 'Sign up failed. Please check username, email, or password length.';
           }
-        } else {
-          document.getElementById('loginError').innerText = 'Sign up failed. Please check username, email, or password length.';
         }
-      }
 
+    });
   });
-});
-
+  } catch (error) {
+    console.log(error)
+    document.getElementById('loginError').innerText = 'Sign up failed. Please check username, email, or password length.';
+  }
 
 }
 
