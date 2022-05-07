@@ -11,6 +11,11 @@
 A simple blog site to have conversations regarding a point of interest.
 
 
+Deployed Here: https://points-of-interest-blog.herokuapp.com/
+
+<div style="display:flex; flex-direction: row;">
+ <img src="./assets/site_IMG.png" width="100%" alt="Homepage from Points Of Interest Blog.">
+</div>
 
 
 
@@ -50,6 +55,7 @@ A simple blog site to have conversations regarding a point of interest.
 | [Node.js](https://nodejs.org/en/) | Runtime Environment | An open source server environment. |
 | [NPM - nodemon](https://www.npmjs.com/package/nodemon) | Module | Is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected. |
 | [NPM - express](https://www.npmjs.com/package/express) | Module | A node package for creating a web framework in node. |
+| [NPM - axios](https://www.npmjs.com/package/axios) | Module | Promise based HTTP client for the browser and node.js |
 | [NPM - express-handlebars](https://www.npmjs.com/package/express-handlebars) | Module | express-handlebars provides a simplified way to integrate Handlebars into the view engine. |
 | [NPM - handlebars](https://www.npmjs.com/package/handlebars) | Module | Handlebars.js is an extension to the Mustache templating language. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be. |
 | [NPM - mysql2](https://www.npmjs.com/package/mysql2) | Database | Client for Node.js with focus on performance. Supports prepared statements, non-utf8 encodings, binary log protocol, compression, ssl and more. |
