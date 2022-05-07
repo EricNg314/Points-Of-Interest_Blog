@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
-const {withAuth} = require('../../utils/auth');
+const {withAuth, withRecaptcha} = require('../../utils/auth');
 
 // New comment route.
-router.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, withRecaptcha, async (req, res) => {
   console.log(`${req.method}: ${req.baseUrl}`);
   try {
-    console.log("req.session: ",req.session )
+    // console.log("req.session: ",req.session )
     if (req.body.comment_text === "") {
       res.status(400).json({message: "Missing comment."})
       return;
@@ -17,7 +17,6 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id
     })
     console.log("commentData: ",commentData )
-    // res.status(200).json(commentData)
     res.status(200).json({message: "Comment Created"})
       
    } catch (error) {

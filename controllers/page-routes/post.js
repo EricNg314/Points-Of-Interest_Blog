@@ -73,7 +73,7 @@ router.get('/view/:id', withAuth, async (req, res) => {
     postInfo.comments = comments;
     postInfo.username = username;
 
-    console.log('postInfo: ', postInfo)
+    // console.log('postInfo: ', postInfo)
 
     res.render('viewPost', {
       postInfo: postInfo,

@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
-const {withAuth} = require('../../utils/auth');
+const {withAuth, withRecaptcha} = require('../../utils/auth');
 
 // New Post route.
-router.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, withRecaptcha, async (req, res) => {
   console.log(`${req.method}: ${req.baseUrl}`);
   try {
     if (req.body.title === "" || req.body.post_comment === "") {
