@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const {withRecaptcha} = require('../../utils/auth');
 
 // get all users
 router.get('/', async (req, res) => {
@@ -18,7 +19,8 @@ router.get('/', async (req, res) => {
 });
 
 // Sign up route.
-router.post('/', async (req, res) => {
+router.post('/', withRecaptcha, async (req, res) => {
+// router.post('/', async (req, res) => {
   console.log(`${req.method}: ${req.baseUrl}`);
   try {
     const userData = await User.create({
